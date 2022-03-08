@@ -4,6 +4,8 @@ import com.school.management.system.Repository.StudentRepository;
 import com.school.management.system.model.DTO.StudentDTO;
 import com.school.management.system.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -20,9 +22,13 @@ public class StudentService {
     @Autowired
     EmailService emailService;
 
-    public List<StudentDTO> listAll() {
+    int pageSize = 3;
+
+    public List<StudentDTO> listAll(int page) {
         List<StudentDTO> studentList = new ArrayList<>();
-        repository.findAll()
+        Pageable pageable = PageRequest.of(page, this.pageSize);
+
+        repository.findAll(pageable)
                 .forEach(student -> studentList.add(student.toDto()));
         return studentList;
     }

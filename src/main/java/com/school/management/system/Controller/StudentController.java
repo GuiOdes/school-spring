@@ -16,12 +16,12 @@ public class StudentController {
     @Autowired
     StudentService service;
 
-    @GetMapping
-    public List<StudentDTO> listAll() {
-        return service.listAll();
+    @GetMapping("/{page}")
+    public List<StudentDTO> listAll(@PathVariable int page) {
+        return service.listAll(page);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("find/{id}")
     public ResponseEntity<StudentDTO> findBy(@PathVariable Long id) {
         return service.findBy(id);
     }
