@@ -17,8 +17,8 @@ public class TeacherController {
     TeacherService service;
 
     @GetMapping
-    public List<TeacherDTO> listAll() {
-        return service.listAll();
+    public List<TeacherDTO> listAll(@PathVariable int page) {
+        return service.listAll(page);
     }
 
     @GetMapping("/{id}")
