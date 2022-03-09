@@ -1,8 +1,8 @@
 package com.school.management.system.Service;
 
 import com.school.management.system.Repository.GradeRepository;
+import com.school.management.system.model.DTO.GradeDTO;
 import com.school.management.system.model.Grade;
-import com.school.management.system.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,28 +17,29 @@ public class GradeService {
     @Autowired
     GradeRepository repository;
 
-    public List<Grade> listAll() {
-        List<Grade> studentList = new ArrayList<>();
-        repository.findAll().forEach(studentList::add);
-        return studentList;
+    public List<GradeDTO> listAll() {
+        List<GradeDTO> gradeList = new ArrayList<>();
+        repository.findAll()
+                .forEach(grade -> gradeList.add(grade.toDto()));
+        return gradeList;
     }
 
-    public ResponseEntity<Grade> findBy(Long id) {
+    public ResponseEntity<GradeDTO> findBy(Long id) {
         return repository.findById(id)
-                .map(grade -> ResponseEntity.ok(grade))
+                .map(grade -> ResponseEntity.ok(grade.toDto()))
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    public ResponseEntity<Grade> create(Grade grade) {
-        return new ResponseEntity<>(repository.save(grade), HttpStatus.CREATED);
+    public ResponseEntity<GradeDTO> create(Grade grade) {
+        return new ResponseEntity<>(repository.save(grade).toDto(), HttpStatus.CREATED);
     }
 
-    public ResponseEntity<Grade> update(Grade grade) {
+    public ResponseEntity<GradeDTO> update(Grade grade) {
         return repository.findById(grade.getId())
                 .map(oldGrade -> {
                     oldGrade.setName(grade.getName());
 
-                    return new ResponseEntity<>(repository.save(oldGrade), HttpStatus.CREATED);
+                    return new ResponseEntity<>(repository.save(oldGrade).toDto(), HttpStatus.CREATED);
                 })
                 .orElse(ResponseEntity.notFound().build());
     }
