@@ -4,6 +4,8 @@ import com.school.management.system.Repository.TeacherRepository;
 import com.school.management.system.model.DTO.TeacherDTO;
 import com.school.management.system.model.Teacher;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -17,9 +19,12 @@ public class TeacherService {
     @Autowired
     TeacherRepository repository;
 
-    public List<TeacherDTO> listAll() {
+    int pageSize = 3;
+
+    public List<TeacherDTO> listAll(int page) {
         List<TeacherDTO> teacherDTOList = new ArrayList<>();
-        repository.findAll()
+        Pageable pageable = PageRequest.of(page+1, this.pageSize);
+        repository.findAll(pageable)
                 .forEach(teacher -> teacherDTOList.add(teacher.toDto()));
         return teacherDTOList;
     }
