@@ -1,5 +1,6 @@
 package com.school.management.system.model;
 
+import com.school.management.system.model.DTO.GradeDTO;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -22,4 +23,8 @@ public class Grade {
 
     @OneToMany(mappedBy = "grade")
     private List<Matter> matterList;
+
+    public GradeDTO toDto(Grade this) {
+        return new GradeDTO(this);
+    }
 }

@@ -1,11 +1,11 @@
 package com.school.management.system.Repository;
 
 import com.school.management.system.model.Teacher;
-import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.CrudRepository;
 
-import java.awt.print.Pageable;
 import java.util.List;
 
-public interface TeacherRepository extends PagingAndSortingRepository<Teacher, Long> {
+public interface TeacherRepository extends CrudRepository<Teacher, Long> {
     List<Teacher> findAll(Pageable pageable);
 }
