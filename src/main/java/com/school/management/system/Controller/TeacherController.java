@@ -16,12 +16,12 @@ public class TeacherController {
     @Autowired
     TeacherService service;
 
-    @GetMapping
+    @GetMapping("/{page}")
     public List<TeacherDTO> listAll(@PathVariable int page) {
         return service.listAll(page);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/find/{id}")
     public ResponseEntity<TeacherDTO> findBy(@PathVariable Long id) {
         return service.findBy(id);
     }

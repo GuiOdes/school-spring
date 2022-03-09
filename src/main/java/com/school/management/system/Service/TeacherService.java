@@ -4,6 +4,8 @@ import com.school.management.system.Repository.TeacherRepository;
 import com.school.management.system.model.DTO.TeacherDTO;
 import com.school.management.system.model.Teacher;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -21,9 +23,10 @@ public class TeacherService {
 
     int pageSize = 3;
 
+    @Cacheable(value = "teacherList") // saves on cache
     public List<TeacherDTO> listAll(int page) {
         List<TeacherDTO> teacherDTOList = new ArrayList<>();
-        Pageable pageable = PageRequest.of(page+1, this.pageSize);
+        Pageable pageable = PageRequest.of(page-1, this.pageSize);
         repository.findAll(pageable)
                 .forEach(teacher -> teacherDTOList.add(teacher.toDto()));
         return teacherDTOList;
@@ -35,10 +38,12 @@ public class TeacherService {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @CacheEvict(value = "teacherList", allEntries = true) // clean teacherList cache
     public ResponseEntity<TeacherDTO> create(Teacher teacher) {
         return new ResponseEntity<>(repository.save(teacher).toDtoCreate(), HttpStatus.CREATED);
     }
 
+    @CacheEvict(value = "teacherList", allEntries = true)
     public ResponseEntity<TeacherDTO> update(Teacher teacher) {
         return repository.findById(teacher.getId())
                 .map(oldTeacher -> {
@@ -54,6 +59,7 @@ public class TeacherService {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @CacheEvict(value = "teacherList", allEntries = true)
     public ResponseEntity deleteBy(Long id) {
         return repository.findById(id)
                 .map(teacher -> {

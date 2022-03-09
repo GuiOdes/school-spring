@@ -4,6 +4,8 @@ import com.school.management.system.Repository.StudentRepository;
 import com.school.management.system.model.DTO.StudentDTO;
 import com.school.management.system.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -24,6 +26,7 @@ public class StudentService {
 
     int pageSize = 3;
 
+    @Cacheable(value = "studentList") // saves on cache
     public List<StudentDTO> listAll(int page) {
         List<StudentDTO> studentList = new ArrayList<>();
         Pageable pageable = PageRequest.of(page, this.pageSize);
@@ -39,11 +42,13 @@ public class StudentService {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @CacheEvict(value = "studentList", allEntries = true) // clean studentlist cache
     public ResponseEntity<StudentDTO> create(Student student) {
         emailService.newStudentEmail(student);
         return new ResponseEntity<>(repository.save(student).toDto(), HttpStatus.CREATED);
     }
 
+    @CacheEvict(value = "studentList", allEntries = true)
     public ResponseEntity<Student> update(Student student) {
         return repository.findById(student.getId())
                 .map(oldStudent -> {
@@ -59,6 +64,7 @@ public class StudentService {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @CacheEvict(value = "studentList", allEntries = true)
     public ResponseEntity deleteBy(Long id) {
         return repository.findById(id)
                 .map(student -> {
