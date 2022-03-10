@@ -1,5 +1,6 @@
 package com.school.management.system.Service;
 
+import com.school.management.system.Model.Status;
 import com.school.management.system.Repository.StudentRepository;
 import com.school.management.system.Model.DTO.StudentDTO;
 import com.school.management.system.Model.Student;
@@ -45,6 +46,7 @@ public class StudentService {
     @CacheEvict(value = "studentList", allEntries = true) // clean studentlist cache
     public ResponseEntity<StudentDTO> create(Student student) {
         emailService.newStudentEmail(student);
+        student.setStatus(Status.ACTIVE);
         return new ResponseEntity<>(repository.save(student).toDto(), HttpStatus.CREATED);
     }
 

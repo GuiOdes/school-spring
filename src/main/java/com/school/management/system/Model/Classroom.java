@@ -4,6 +4,8 @@ import com.school.management.system.Model.DTO.ClassroomDTO;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Data
@@ -15,9 +17,12 @@ public class Classroom {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NotNull
     @Column(nullable = false)
+    @NotBlank
     private String name;
 
+    @NotNull
     @Column(nullable = false)
     @Enumerated(value = EnumType.STRING)
     private Shift shift;
