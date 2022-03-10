@@ -1,8 +1,8 @@
 package com.school.management.system.Controller;
 
 import com.school.management.system.Service.EvaluationService;
-import com.school.management.system.model.DTO.EvaluationDTO;
-import com.school.management.system.model.Evaluation;
+import com.school.management.system.Model.DTO.EvaluationDTO;
+import com.school.management.system.Model.Evaluation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

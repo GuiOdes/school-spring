@@ -1,8 +1,8 @@
 package com.school.management.system.Controller;
 
 import com.school.management.system.Service.TeacherService;
-import com.school.management.system.model.DTO.TeacherDTO;
-import com.school.management.system.model.Teacher;
+import com.school.management.system.Model.DTO.TeacherDTO;
+import com.school.management.system.Model.Teacher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

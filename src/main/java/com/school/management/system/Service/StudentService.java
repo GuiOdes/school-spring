@@ -1,8 +1,8 @@
 package com.school.management.system.Service;
 
 import com.school.management.system.Repository.StudentRepository;
-import com.school.management.system.model.DTO.StudentDTO;
-import com.school.management.system.model.Student;
+import com.school.management.system.Model.DTO.StudentDTO;
+import com.school.management.system.Model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;

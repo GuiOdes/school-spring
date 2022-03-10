@@ -1,7 +1,7 @@
-package com.school.management.system.model.DTO;
+package com.school.management.system.Model.DTO;
 
-import com.school.management.system.model.Shift;
-import com.school.management.system.model.Student;
+import com.school.management.system.Model.Shift;
+import com.school.management.system.Model.Student;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

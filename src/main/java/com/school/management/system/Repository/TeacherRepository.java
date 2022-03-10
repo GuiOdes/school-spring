@@ -1,6 +1,6 @@
 package com.school.management.system.Repository;
 
-import com.school.management.system.model.Teacher;
+import com.school.management.system.Model.Teacher;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
 

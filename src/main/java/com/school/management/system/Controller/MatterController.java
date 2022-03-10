@@ -1,8 +1,8 @@
 package com.school.management.system.Controller;
 
 import com.school.management.system.Service.MatterService;
-import com.school.management.system.model.DTO.MatterDTO;
-import com.school.management.system.model.Matter;
+import com.school.management.system.Model.DTO.MatterDTO;
+import com.school.management.system.Model.Matter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

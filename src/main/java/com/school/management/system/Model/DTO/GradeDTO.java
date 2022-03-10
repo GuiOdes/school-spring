@@ -1,6 +1,6 @@
-package com.school.management.system.model.DTO;
+package com.school.management.system.Model.DTO;
 
-import com.school.management.system.model.Grade;
+import com.school.management.system.Model.Grade;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
