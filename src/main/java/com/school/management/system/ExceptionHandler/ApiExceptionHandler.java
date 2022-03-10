@@ -1,5 +1,8 @@
 package com.school.management.system.ExceptionHandler;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +19,9 @@ import java.util.List;
 @ControllerAdvice
 public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 
+    @Autowired
+    private MessageSource messageSource;
+
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
         List<Properties.Field> fieldList = new ArrayList<>();
@@ -23,7 +29,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
         ex.getBindingResult().getAllErrors()
                 .forEach(objectError -> {
                     String name = ((FieldError) objectError).getField();
-                    String message = objectError.getDefaultMessage();
+                    String message = messageSource.getMessage(objectError, LocaleContextHolder.getLocale());
                     fieldList.add(new Properties.Field(name, message));
                 });
 
