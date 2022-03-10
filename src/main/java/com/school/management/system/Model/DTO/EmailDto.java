@@ -1,4 +1,4 @@
-package com.school.management.system.model.DTO;
+package com.school.management.system.Model.DTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 

@@ -1,8 +1,8 @@
 package com.school.management.system.Service;
 
 import com.school.management.system.Repository.EmailRepository;
-import com.school.management.system.model.*;
-import com.school.management.system.model.DTO.EmailDto;
+import com.school.management.system.Model.*;
+import com.school.management.system.Model.DTO.EmailDto;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

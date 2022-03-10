@@ -1,9 +1,8 @@
 package com.school.management.system.Service;
 
 import com.school.management.system.Repository.ClassroomRepository;
-import com.school.management.system.model.Classroom;
-import com.school.management.system.model.DTO.ClassroomDTO;
-import com.school.management.system.model.Student;
+import com.school.management.system.Model.Classroom;
+import com.school.management.system.Model.DTO.ClassroomDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

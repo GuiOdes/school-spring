@@ -1,8 +1,8 @@
 package com.school.management.system.Controller;
 
 import com.school.management.system.Service.DisciplinaryMeasureService;
-import com.school.management.system.model.DTO.DisciplinaryMeasureDTO;
-import com.school.management.system.model.DisciplinaryMeasure;
+import com.school.management.system.Model.DTO.DisciplinaryMeasureDTO;
+import com.school.management.system.Model.DisciplinaryMeasure;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

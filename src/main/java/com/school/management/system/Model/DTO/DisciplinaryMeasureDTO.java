@@ -1,8 +1,8 @@
-package com.school.management.system.model.DTO;
+package com.school.management.system.Model.DTO;
 
-import com.school.management.system.model.Gravity;
-import com.school.management.system.model.Student;
-import com.school.management.system.model.Teacher;
+import com.school.management.system.Model.Gravity;
+import com.school.management.system.Model.Student;
+import com.school.management.system.Model.Teacher;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

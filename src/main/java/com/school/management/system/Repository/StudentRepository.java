@@ -1,9 +1,8 @@
 package com.school.management.system.Repository;
 
-import com.school.management.system.model.Student;
+import com.school.management.system.Model.Student;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.PagingAndSortingRepository;
 
 import java.util.List;
 

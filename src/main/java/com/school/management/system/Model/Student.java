@@ -1,10 +1,11 @@
-package com.school.management.system.model;
+package com.school.management.system.Model;
 
-import com.school.management.system.model.DTO.StudentDTO;
-import com.school.management.system.model.DTO.TeacherDTO;
+import com.school.management.system.Model.DTO.StudentDTO;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -18,9 +19,12 @@ public class Student {
     private Long id;
 
     @Column(nullable = false)
+    @NotBlank
     private String name;
 
     @Column(nullable = false, unique = true)
+    @NotBlank
+    @Email
     private String email;
 
     @Column(nullable = false)

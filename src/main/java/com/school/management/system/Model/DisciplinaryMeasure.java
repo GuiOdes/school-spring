@@ -1,6 +1,6 @@
-package com.school.management.system.model;
+package com.school.management.system.Model;
 
-import com.school.management.system.model.DTO.DisciplinaryMeasureDTO;
+import com.school.management.system.Model.DTO.DisciplinaryMeasureDTO;
 import lombok.Data;
 
 import javax.persistence.*;

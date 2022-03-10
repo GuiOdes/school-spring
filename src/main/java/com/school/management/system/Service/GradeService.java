@@ -1,8 +1,8 @@
 package com.school.management.system.Service;
 
 import com.school.management.system.Repository.GradeRepository;
-import com.school.management.system.model.DTO.GradeDTO;
-import com.school.management.system.model.Grade;
+import com.school.management.system.Model.DTO.GradeDTO;
+import com.school.management.system.Model.Grade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
