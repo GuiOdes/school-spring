@@ -6,6 +6,7 @@ import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -18,26 +19,36 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(nullable = false)
+    @NotNull
     @NotBlank
+    @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false, unique = true)
+    @NotNull
     @NotBlank
     @Email
+    @Column(nullable = false, unique = true)
     private String email;
 
+    @NotNull
+    @NotBlank
     @Column(nullable = false)
     private LocalDate birth;
 
+    @NotNull
+    @NotBlank
     @Column(nullable = false)
     @Enumerated(value = EnumType.STRING)
     private Status status;
 
+    @NotNull
+    @NotBlank
     @ManyToOne
     @JoinColumn(name = "classroom_id", nullable = false)
     private Classroom classroom;
 
+    @NotNull
+    @NotBlank
     @ManyToOne
     @JoinColumn(name = "grade_id", nullable = false)
     private Grade grade;

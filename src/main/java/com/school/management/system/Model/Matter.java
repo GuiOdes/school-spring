@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Data
@@ -17,16 +19,24 @@ public class Matter {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NotNull
+    @NotBlank
     @Column(nullable = false)
     private String name;
 
+    @NotNull
+    @NotBlank
     @Column(nullable = false)
     private int workload;
 
+    @NotNull
+    @NotBlank
     @ManyToOne
     @JoinColumn(nullable = false, name = "teacher_id")
     private Teacher teacher;
 
+    @NotNull
+    @NotBlank
     @ManyToOne
     @JoinColumn(name = "grade", nullable = false)
     private Grade grade;

@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -20,15 +22,23 @@ public class Teacher {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NotNull
+    @NotBlank
     @Column(nullable = false)
     private String name;
 
+    @NotNull
+    @NotBlank
     @Column(nullable = false, unique = true)
     private String email;
 
+    @NotNull
+    @NotBlank
     @Column(nullable = false)
     private LocalDate birth;
 
+    @NotNull
+    @NotBlank
     @Column(nullable = false)
     @Enumerated(value = EnumType.STRING)
     private Status status;

@@ -4,6 +4,8 @@ import com.school.management.system.Model.DTO.GradeDTO;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Data
@@ -15,6 +17,8 @@ public class Grade {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NotNull
+    @NotBlank
     @Column(nullable = false)
     private String name;
 
