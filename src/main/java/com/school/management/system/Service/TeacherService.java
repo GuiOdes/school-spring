@@ -1,5 +1,6 @@
 package com.school.management.system.Service;
 
+import com.school.management.system.Model.Status;
 import com.school.management.system.Repository.TeacherRepository;
 import com.school.management.system.Model.DTO.TeacherDTO;
 import com.school.management.system.Model.Teacher;
@@ -40,6 +41,7 @@ public class TeacherService {
 
     @CacheEvict(value = "teacherList", allEntries = true) // clean teacherList cache
     public ResponseEntity<TeacherDTO> create(Teacher teacher) {
+        teacher.setStatus(Status.ACTIVE);
         return new ResponseEntity<>(repository.save(teacher).toDtoCreate(), HttpStatus.CREATED);
     }
 
