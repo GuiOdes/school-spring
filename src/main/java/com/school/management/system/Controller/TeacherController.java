@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -27,7 +28,7 @@ public class TeacherController {
     }
 
     @PostMapping("/new")
-    public ResponseEntity<TeacherDTO> create(@RequestBody Teacher teacher) {
+    public ResponseEntity<TeacherDTO> create(@Valid @RequestBody Teacher teacher) {
         return service.create(teacher);
     }
 

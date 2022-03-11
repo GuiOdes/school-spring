@@ -4,6 +4,7 @@ import com.school.management.system.Model.Status;
 import com.school.management.system.Repository.StudentRepository;
 import com.school.management.system.Model.DTO.StudentDTO;
 import com.school.management.system.Model.Student;
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -13,6 +14,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.SystemException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,8 +46,12 @@ public class StudentService {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @SneakyThrows
     @CacheEvict(value = "studentList", allEntries = true) // clean studentlist cache
     public ResponseEntity<StudentDTO> create(Student student) {
+        if (existsByEmail(student.getEmail())) {
+            throw new SQLIntegrityConstraintViolationException("E-mail já cadastrado");
+        }
         emailService.newStudentEmail(student);
         student.setStatus(Status.ACTIVE);
         return new ResponseEntity<>(repository.save(student).toDto(), HttpStatus.CREATED);
@@ -74,5 +81,9 @@ public class StudentService {
                     return ResponseEntity.ok().build();
                 })
                 .orElse(ResponseEntity.notFound().build());
+    }
+
+    public boolean existsByEmail(String email) {
+        return repository.existsByEmail(email);
     }
 }

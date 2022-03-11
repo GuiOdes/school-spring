@@ -4,6 +4,7 @@ import com.school.management.system.Model.Status;
 import com.school.management.system.Repository.TeacherRepository;
 import com.school.management.system.Model.DTO.TeacherDTO;
 import com.school.management.system.Model.Teacher;
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -13,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,8 +41,12 @@ public class TeacherService {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @SneakyThrows
     @CacheEvict(value = "teacherList", allEntries = true) // clean teacherList cache
     public ResponseEntity<TeacherDTO> create(Teacher teacher) {
+        if (existsByEmail(teacher.getEmail())) {
+            throw new SQLIntegrityConstraintViolationException("Email já cadastrado");
+        }
         teacher.setStatus(Status.ACTIVE);
         return new ResponseEntity<>(repository.save(teacher).toDtoCreate(), HttpStatus.CREATED);
     }
@@ -69,5 +75,9 @@ public class TeacherService {
                     return ResponseEntity.ok().build();
                 })
                 .orElse(ResponseEntity.notFound().build());
+    }
+
+    public boolean existsByEmail(String email) {
+        return repository.existsByEmail(email);
     }
 }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -27,7 +28,7 @@ public class GradeController {
     }
 
     @PostMapping(path = "/new")
-    public ResponseEntity<GradeDTO> create(@RequestBody Grade grade) {
+    public ResponseEntity<GradeDTO> create(@Valid @RequestBody Grade grade) {
         return service.create(grade);
     }
 

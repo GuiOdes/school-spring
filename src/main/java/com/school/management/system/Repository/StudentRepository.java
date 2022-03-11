@@ -8,6 +8,8 @@ import java.util.List;
 
 public interface StudentRepository extends CrudRepository<Student, Long> {
     List<Student> findAll(Pageable pageable);
+
+    boolean existsByEmail(String email);
 }
 
 
