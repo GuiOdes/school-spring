@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -25,6 +26,7 @@ public class Matter {
     private String name;
 
     @NotNull
+    @Min(value = 5)
     @Column(nullable = false)
     private int workload;
 
