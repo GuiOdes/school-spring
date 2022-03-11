@@ -1,5 +1,6 @@
 package com.school.management.system.Model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.school.management.system.Model.DTO.TeacherDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,6 +12,7 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.List;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @Data
 @Entity
 @Table(name = "teacher")
