@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -27,7 +28,7 @@ public class DisciplinaryMeasureController {
     }
 
     @PostMapping("/new")
-    public ResponseEntity<DisciplinaryMeasureDTO> create(@RequestBody DisciplinaryMeasure disciplinaryMeasure) {
+    public ResponseEntity<DisciplinaryMeasureDTO> create(@Valid @RequestBody DisciplinaryMeasure disciplinaryMeasure) {
         return service.create(disciplinaryMeasure);
     }
 
