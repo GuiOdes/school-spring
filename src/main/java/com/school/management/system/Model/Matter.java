@@ -25,18 +25,15 @@ public class Matter {
     private String name;
 
     @NotNull
-    @NotBlank
     @Column(nullable = false)
     private int workload;
 
     @NotNull
-    @NotBlank
     @ManyToOne
     @JoinColumn(nullable = false, name = "teacher_id")
     private Teacher teacher;
 
     @NotNull
-    @NotBlank
     @ManyToOne
     @JoinColumn(name = "grade", nullable = false)
     private Grade grade;

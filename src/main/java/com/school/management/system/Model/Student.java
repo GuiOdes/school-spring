@@ -31,24 +31,20 @@ public class Student {
     private String email;
 
     @NotNull
-    @NotBlank
     @Column(nullable = false)
     private LocalDate birth;
 
     @NotNull
-    @NotBlank
     @Column(nullable = false)
     @Enumerated(value = EnumType.STRING)
     private Status status;
 
     @NotNull
-    @NotBlank
     @ManyToOne
     @JoinColumn(name = "classroom_id", nullable = false)
     private Classroom classroom;
 
     @NotNull
-    @NotBlank
     @ManyToOne
     @JoinColumn(name = "grade_id", nullable = false)
     private Grade grade;

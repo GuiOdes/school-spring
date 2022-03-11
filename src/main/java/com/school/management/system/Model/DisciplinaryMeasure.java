@@ -17,19 +17,16 @@ public class DisciplinaryMeasure {
     private Long id;
 
     @NotNull
-    @NotBlank
     @ManyToOne
     @JoinColumn(nullable = false)
     private Student student;
 
     @NotNull
-    @NotBlank
     @ManyToOne
     @JoinColumn(nullable = false)
     private Teacher teacher;
 
     @NotNull
-    @NotBlank
     @Column(nullable = false)
     @Enumerated(value = EnumType.STRING)
     private Gravity gravity;

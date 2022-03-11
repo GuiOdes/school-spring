@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -12,7 +11,7 @@ import java.util.List;
 public class Properties {
 
     private String status;
-    private List<Field> fieldList = new ArrayList<>();
+    private List<Field> fieldList;
 
     @AllArgsConstructor
     @Getter

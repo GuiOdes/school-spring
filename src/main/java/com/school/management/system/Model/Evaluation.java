@@ -17,18 +17,15 @@ public class Evaluation {
     private Long id;
 
     @NotNull
-    @NotBlank
     @Column(nullable = false)
     private double result;
 
     @NotNull
-    @NotBlank
     @ManyToOne
     @JoinColumn(nullable = false)
     private Matter matter;
 
     @NotNull
-    @NotBlank
     @ManyToOne
     @JoinColumn(nullable = false)
     private Student student;

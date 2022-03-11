@@ -18,8 +18,8 @@ public class Classroom {
     private Long id;
 
     @NotNull
-    @Column(nullable = false)
     @NotBlank
+    @Column(nullable = false)
     private String name;
 
     @NotNull
