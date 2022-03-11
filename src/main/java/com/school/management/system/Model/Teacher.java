@@ -33,12 +33,10 @@ public class Teacher {
     private String email;
 
     @NotNull
-    @NotBlank
     @Column(nullable = false)
     private LocalDate birth;
 
     @NotNull
-    @NotBlank
     @Column(nullable = false)
     @Enumerated(value = EnumType.STRING)
     private Status status;

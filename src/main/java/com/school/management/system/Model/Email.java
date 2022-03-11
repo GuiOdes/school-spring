@@ -47,12 +47,10 @@ public class Email {
     private String text;
 
     @NotNull
-    @NotBlank
     @Column(nullable = false)
     private LocalDate sendDateEmail;
 
     @NotNull
-    @NotBlank
     @Column(nullable = false)
     private StatusEmail statusEmail;
 
